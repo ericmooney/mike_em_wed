@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emily and Mike Wedding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="row">
+      <div class="navbar-header col-xs-12">
+        <a class="navbar-brand col-xs-12" href="/">Emily & Mike</a>
+      </div>
+    </div>
+  </nav>
+
+<%= yield %>
+
+<script src="//code.jquery.com/jquery.js"></script>
+
+</body>
+</html>
