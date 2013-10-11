@@ -3,9 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  padding-top: 70px;
+  padding-top: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(boat_couple.JPG);
 }
 
-.navbar-brand {
+.nav.navbar-nav {
+  margin-left: 20%;
+}
+
+.nav.navbar-nav a {
+  font-family: 'Belleza', sans-serif;
+  font-size: 17px;
+}
+
+
+#name_banner {
+  background-color: #FFFFFF;
   text-align: center;
+  height: 125px;
+  -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+
+#name_banner > h1 {
+  font-family: 'Alex Brush', cursive;
+  font-size: 50px;
+  color:#B2B2B2;
 }
