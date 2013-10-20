@@ -12,10 +12,6 @@ body {
   background-image: url(gedney_farm_sign.jpg);
 }
 
-.accommodations_page {
-  background-image: url(egremont.jpg);
-}
-
 .nav.navbar-nav {
   margin-left: 20%;
 }
@@ -25,10 +21,27 @@ body {
   font-size: 17px;
 }
 
-#header_banner {
+#home_banner {
   background-color: #FFFFFF;
   text-align: center;
   height: 125px;
+  -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+
+#home_banner > h1 {
+  font-family: 'Alex Brush', cursive;
+  font-size: 50px;
+  color:#B2B2B2;
+}
+
+#header_banner {
+  background-color: #FFFFFF;
+  text-align: center;
+  height: 100px;
+  margin-top: -110px;
+  z-index: 20;
   -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
   -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
   box-shadow: 1px 2px 3px rgba(0,0,0,.5);
@@ -58,6 +71,7 @@ body {
   color:#B2B2B2;
 }
 
+// GOOGLE MAPS CSS START
 #map-canvas {
   padding: 0px;
   height: 300px;
@@ -103,6 +117,22 @@ body {
     float: none;
     width: auto;
   }
+}
+
+// GOOGLE MAPS CSS END
+
+#background_image > img {
+  width: 100%
+}
+
+#background_image {
+  width:100%;
+  height:auto;
+  margin-top: -100px;
+}
+
+#accommodations_page_container {
+  padding: 0px 10px;
 }
 
 #accommodations_container > div {

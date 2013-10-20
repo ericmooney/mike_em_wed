@@ -1,7 +1,129 @@
+<br/>
+<br/>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.expkey=AIzaSyAzaPBv7O1v6cfsbKB9jRecJm64YPIEqLM&sensor=false"></script>
+<script>
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+
+function initialize() {
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var gedneyLatlng = new google.maps.LatLng(42.1217479, -73.2252985);
+  var mapOptions = {
+    zoom: 7,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: gedneyLatlng
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('directions-panel'));
+  var marker = new google.maps.Marker({
+       position: gedneyLatlng,
+       map: map,
+       title: 'Gedney Farm'
+  });
+  var control = document.getElementById('control');
+  control.style.display = 'block';
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+}
+
+function calcRoute() {
+  $('.active_accommodation').removeClass('active_accommodation');
+  var start = document.getElementById('start').value;
+  var end = '<%= @wedding_address %>' ;
+  var accommodation_selected_name = $('#start option:selected').attr('name');
+  var accommodation_div = $('#'+accommodation_selected_name);
+  accommodation_div.addClass('active_accommodation');
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 <div class="row-fluid">
   <div class="span12">
-    <div id="footer_banner">
-      <h1>The Egremont</h1>
+    <div id="background_image"><img src="assets/egremont.jpg"></div>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <div id="header_banner">
+      <br/>
+      <h1>Local Accommodations</h1>
     </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+<div id="accommodations_page_container">
+  <div id="control">
+    <strong>Start:</strong>
+    <select id="start" onchange="calcRoute();">
+      <option value="<%= @wedding_address %>">--Select Accommodation--</option>
+      <% @accommodations.each do |accommodation| %>
+        <option name= "accommodation<%= accommodation.id %>" value="<%= accommodation.address %>"><%= accommodation.name %> (<%= accommodation.travel_time %> min)</option>
+      <% end %>
+    </select>
+    <strong id="end">to the <%= @wedding_location_name %></strong>
+  </div>
+  <div id="directions-panel"></div>
+  <div id="map-canvas"></div>
+
+  <div id="accommodations_container">
+  <h1>Accommodations list</h1>
+
+  <h2>House rentals are available in New Marlborough through <a href="http://www.homeaway.com/search/keywords:New+Marlborough%2C+Massachusetts">HomeAway</a> and <a href="http://www.vrbo.com/vacation-rentals/usa/massachusetts/berkshires/new-marlborough?from-date=2014-05-04&to-date=2014-05-11">VRBO</a>.</h2>
+
+    <div id="shuttle">
+      <h2>Shuttle service will be provided between the following hotels and Gedney Farm on the evening of the wedding. Please mention that you are a guest of the Oot-Damiano wedding when booking.</h2>
+
+      <% @shuttle_accommodations.each do |accommodation| %>
+        <div id="accommodation<%= accommodation.id %>" class="accommodation_list">
+          <h3><a href="<%= accommodation.website %>"><%= accommodation.name %></a></h3>
+          <p><%= accommodation.address %></p>
+          <p><%= accommodation.phone %></p>
+          <p><%= accommodation.requirement %></p>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div id="no_shuttle">
+      <h2>The following nearby hotels are also good options as long as you don’t mind getting yourself to and from the wedding.</h2>
+
+      <% @no_shuttle_accommodations.each do |accommodation| %>
+        <div id="accommodation<%= accommodation.id %>" class="accommodation_list">
+          <h3><a href="<%= accommodation.website %>"><%= accommodation.name %></a></h3>
+          <p><%= accommodation.address %></p>
+          <p><%= accommodation.phone %></p>
+          <p><%= accommodation.requirement %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="lenox">
+      <h2>A bit further away, Lenox, MA has nice hotels.</h2>
+
+      <% @lenox_accommodations.each do |accommodation| %>
+        <div id="accommodation<%= accommodation.id %>" class="accommodation_list">
+          <h3><a href="<%= accommodation.website %>"><%= accommodation.name %></a></h3>
+          <p><%= accommodation.address %></p>
+          <p><%= accommodation.phone %></p>
+          <p><%= accommodation.requirement %></p>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
