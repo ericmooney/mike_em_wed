@@ -7,18 +7,26 @@
   <%= javascript_include_tag "application" %>
   <link href='http://fonts.googleapis.com/css?family=Alex+Brush' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Belleza' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= @page %>">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="row">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
       <!-- <div class="navbar-header col-xs-12"> -->
         <ul class="nav navbar-nav">
           <li class=<%= @page == "home_page" ? "active" : "" %>><%= link_to "Home", home_path %></li>
-          <li class=<%= @page == "map_page" ? "active" : "" %>><%= link_to "Map", map_path %></li>
-          <li class=<%= @page == "accommodations_page" ? "active" : "" %>><%= link_to "Accommodations", accommodations_path %></li>
           <li class=<%= @page == "weekend_page" ? "active" : "" %>><%= link_to "Weekend", weekend_path %></li>
+          <li class=<%= @page == "accommodations_page" ? "active" : "" %>><%= link_to "Accommodations", accommodations_path %></li>
           <li class=<%= @page == "shuttle_page" ? "active" : "" %>><%= link_to "Shuttle", shuttle_path %></li>
         </ul>
       <!-- </div> -->

@@ -6,6 +6,7 @@ body {
   padding-top: 30px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color:#fef6e7;
 }
 
 .home_page {
@@ -133,22 +134,72 @@ body {
 
 #accommodations_page_container {
   padding: 0px 10px;
+  text-align:center;
 }
 
 #accommodations_container > div {
   width: 100%;
-  border: 1px solid black;
+  // border: 1px solid black;
   display: block;
   float: left;
 }
 
 .accommodation_list {
   float: left;
-  border: 2px dashed black;
+  border: 1px solid black;
   width:250px;
   height: 210px;
+  margin-right:10px;
+  margin-top:10px;
+  text-align:center;
 }
 
 .active_accommodation {
-  background-color: yellow;
+  background-color: #e5d09d;
+}
+
+#accommodations_container h1,h2,h3,p {
+  font-family: 'Marcellus', serif;
+}
+
+#arrow img {
+  padding-left: 15px;
+}
+
+/* Flaired edges, by Tomas Theunissen */
+
+hr.style-seven {
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+hr.style-seven:before { /* Not really supposed to work, but does */
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
+.side_50{
+  width: 50%;
+}
+
+#boat_couple {
+  width: 50%;
+  height:450px;
+  background-image: url(boat_couple.JPG);
+  background-size:cover;
+}
+
+#barns_night {
+  width: 50%;
+  height:450px;
+  background-image: url(barns_night.jpeg);
+  background-size:cover;
 }
